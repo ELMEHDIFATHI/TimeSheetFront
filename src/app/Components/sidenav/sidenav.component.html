@@ -1,0 +1,32 @@
+<mat-nav-list>
+  <div class="logo py-4">
+    <img src="./assets/logo.png" alt="Company Logo" />
+  </div>
+  <mat-divider></mat-divider>
+  
+  <br>
+
+  <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+    <mat-icon>home</mat-icon> Home
+  </a> -->
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard" *ngIf="authService.isAdministrateur()">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/calender">
+       <mat-icon>date_range</mat-icon> Calender
+       </a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/timesheet" *ngIf="!authService.isAdministrateur()">
+       <mat-icon>watch_later</mat-icon> Time </a>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/tache" *ngIf="!authService.isAdministrateur()"> 
+      <mat-icon>list_alt</mat-icon>Task</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/gestion-projet" *ngIf="authService.isAdministrateur()">
+     <mat-icon>work</mat-icon>Project Management
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/gestion-user" *ngIf="authService.isAdministrateur()">
+      <mat-icon>supervised_user_circle</mat-icon>User Management
+     </a>
+
+<a mat-list-item    routerLinkActive="list-item-active" routerLink="event-modification" *ngIf="authService.isAdministrateur()" > <mat-icon>event</mat-icon>Event Management</a>
+
+</mat-nav-list>

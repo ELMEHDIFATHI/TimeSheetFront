@@ -1,0 +1,37 @@
+.display-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .copyright.display-flex.my-auto {
+    padding-left: 27px;
+    padding-right: 36px;
+    font-size: 13px;
+  }
+  
+  .font-weight {
+    font-weight: bold;
+  }
+  
+  .my-auto {
+    padding-top: 6.8px !important;
+    padding-bottom: 8px !important;
+  }
+  
+  .bg-cm {
+    background: #f9ce21;
+  }
+  
+  .cm-bg-se {
+    background-color: #f9ce21;
+  }
+  
+  .cm-text-muted-2 {
+    color: black !important;
+  }
+  
+  .cm-text-muted {
+    color: black !important;
+  }
+  

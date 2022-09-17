@@ -1,0 +1,147 @@
+@import "/src/app/style/base/base.scss";
+@import "/src/app/style/inputs/slider.scss";
+@import "/src/app/style/inputs/color-picker.scss";
+@import "/src/app/style/inputs/input.scss";
+@import "/src/app/style/inputs/textbox.scss";
+@import "/src/app/style/inputs/uploader.scss";
+
+
+
+* {
+    font-family: "Montserrat", sans-serif;
+
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 2em;
+    font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”;
+ 
+  }
+
+  div{
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+  }
+
+  div .card{
+    margin-bottom: 40px;
+  }
+  
+
+:host ::ng-deep .p-rowgroup-footer td {
+    font-weight: 700;
+}
+
+:host ::ng-deep .p-rowgroup-header {
+    span {
+        font-weight: 700;
+    }
+
+    .p-row-toggler {
+        vertical-align: middle;
+        margin-right: .25rem;
+    }
+}
+
+
+
+
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding: 2em;
+    font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”;
+  }
+  .div .small{
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+  }
+  th{
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+
+  }
+  td{
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+  }
+
+
+  //les badge
+  .projet-badge {
+    border-radius: var(--border-radius);
+    padding: .25em .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+
+    &.projet-ToDo {
+        background: #FFCDD2;
+        color: #C63737;
+    }
+
+    &.projet-InProgress {
+        background: #FEEDAF;
+        color: #f6c103;
+    }
+
+    &.projet-Done {
+        background: #B3E5FC;
+        color: #3767c6;
+    }
+    &.projet-true {
+        background: #bcf7bc;
+        color: #017001;
+    }
+
+    &.projet-false {
+        background: #f08c8c;
+        color: #c30d0d;
+    }
+
+
+}
+
+
+
+
+
+
+.sammy-nowrap-2 {
+    text-overflow: ellipsis ellipsis;
+    hyphens:auto;
+    word-wrap:break-word;
+    }
+
+
+    .user {
+        font-size: 14px;
+      }
+      mat-toolbar {
+        background: #f7f7f7;
+      }
+      .user-image {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        &-icon {
+          height: 18px;
+          font-size: 16px;
+        }
+      }
+      
+      ::ng-deep {
+        .mat-menu-content {
+          width: 160px;
+        }
+      }

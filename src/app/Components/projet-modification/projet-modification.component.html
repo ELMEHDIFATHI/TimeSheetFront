@@ -1,0 +1,228 @@
+<div class="container-fluid page">
+    <p-toolbar>
+        <ng-template pTemplate="left">
+            <h4>Project Modification</h4>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <button routerLinkActive="list-item-active" [routerLink]="['/projet-tache',project.id_Project]"
+                class="e-btn e-outline e-warning">
+                Back to project details
+            </button>
+
+        </ng-template>
+    </p-toolbar>
+
+    <div class="card" style="margin-top: 10px; margin-bottom: 40px">
+
+        <div class="card-body">
+
+            <p-splitter [style]="{'height': '50px'}" [panelSizes]="[20,20]" [minSizes]="[10,0]" styleClass="mb-5">
+                <ng-template pTemplate>
+                    <p-splitter layout="vertical">
+                        <ng-template pTemplate>
+                            <div class="col flex align-items-center justify-content-center">
+                                <h3>{{project.name}}</h3>
+                            </div>
+                        </ng-template>
+                    </p-splitter>
+                </ng-template>
+            </p-splitter>
+
+
+
+
+
+            <p-toast></p-toast>
+
+            <div>
+                <div class="card small">
+                    <p-table #dt [value]="project.taskList" rowGroupMode="rowspan" groupRowsBy="representative.name"
+                        sortField="representative.name" sortMode="single" responsiveLayout="scroll"
+                        styleClass="p-datatable-sm" [rows]="10" [paginator]="true"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                        <ng-template pTemplate="caption">
+                            <div class="flex align-items-center justify-content-between">
+                                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                    <h5 class="m-0">Manage Tasks</h5>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 justify-content-end">
+                                    <div style="float: right;">
+                                        <button class="e-btn e-outline e-success" (click)="openNew()">
+                                            Add New Task</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortable Column="id">
+                                    <div class="text-center">Id<p-sortIcon field="name"></p-sortIcon>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="description">Description<p-sortIcon field="name"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="duration">
+                                    <div class="text-center">Duration<p-sortIcon field="price">
+                                        </p-sortIcon>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="inventoryStatus">
+                                    <div class="text-center">Status <p-sortIcon field="inventoryStatus">
+                                        </p-sortIcon>
+                                    </div>
+                                </th>
+                                <th pSortableColumn="verified">
+                                    <div class="text-center">Verified<p-sortIcon field="price">
+                                        </p-sortIcon>
+                                    </div>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-task>
+                            <tr>
+                                <td class="text-center">{{task.id_Task}}</td>
+                                <td>{{task.nom}}</td>
+                                <td>{{task.description}}</td>
+                                <td class="text-center">{{task.duration}}</td>
+                                <td class="text-center"><span [class]="'projet-badge projet-' + task.status">{{task.status}}</span></td>
+                                <td class="text-center" ><span [class]="'projet-badge projet-' + task.verified">{{task.verified}}</span></td>
+                                <td>
+                                    <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-info mr-2" style="height: 25px;width: 25px;"
+                                        (click)="editProduct(task)"></button>
+
+                                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteProduct(task)" style="height: 25px;width: 25px"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="flex align-items-center justify-content-between">
+                                In total there are {{ project.taskList ? project.taskList.length : 0 }} tasks.
+                            </div>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+
+            <p-dialog [(visible)]="taskDialog" [style]="{width: '450px'}" header="Task Details" [modal]="true"
+                styleClass="p-fluid">
+                <ng-template pTemplate="content">
+                    <form id="formId" [formGroup]="reactForm" #formDir="ngForm" class="form-horizontal" novalidate="">
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <input readonly id="id_Task" type="text" formControlName="id_Task"
+                                    [(ngModel)]="task.id_Task">
+                                <span class="e-float-line"></span>
+                                <label for="check" class="e-float-text"></label>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <input id="nom" type="text" formControlName="nom" [(ngModel)]="task.nom">
+                                <span class="e-float-line"></span>
+                                <label for="check" class="e-float-text">Name</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <textarea formControlName="description" [(ngModel)]="task.description"></textarea>
+                                <span class="e-float-line"></span>
+                                <label for="check" class="e-float-text">Description</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <input id="hours" formControlName="duration" type="number" min="0" max="100"
+                                    name="number" step="1" value="4" [(ngModel)]="task.duration">
+
+                                <span class="e-float-line"></span>
+                                <label for="check" class="e-float-text">Duration</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                            <div class="e-float-input">
+                                <ejs-dropdownlist formControlName="status" id='status' [dataSource]='Status'
+                                    [(value)]='task.status' [fields]='fields1' [placeholder]='waterMark'
+                                    [popupHeight]='height'></ejs-dropdownlist>
+                                <span class="e-float-line"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                            <div class="e-float-input">
+                                <ejs-dropdownlist formControlName="verified" id='verified' [dataSource]='Verified'
+                                    [(value)]='task.verified' [fields]='fields2' [placeholder]='waterMark1'
+                                    [popupHeight]='height'></ejs-dropdownlist>
+                                <span class="e-float-line"></span>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                            <ejs-dropdownlist id='employees' [dataSource]='emplyeeList' [fields]='fields'
+                                [popupHeight]='height' [placeholder]='watermark' [(value)]="ide">
+                                <ng-template #headerTemplate>
+                                    <div class="head"> <span class="photo">Photo</span> <span
+                                            style="margin-left:17px;">Employee Info</span></div>
+                                </ng-template>
+                                <ng-template #itemTemplate let-data>
+                                    <div>
+                                        <img class="empImage" [src]="'data:image/jpg;base64,' + data.photo"
+                                            height="26px" width="26px" alt="employee" />
+                                        <div class="multiename"> {{data.firstName}} </div>
+                                        <div class="multijob"> {{data.lastName}} </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template #valueTemplate let-data>
+                                    <div>
+                                        <img class="valueTemp" [src]="'data:image/jpg;base64,' + data.photo"
+                                            height="26px" width="26px" alt="employee" />
+                                        <div class="nameTemp"> {{data.lastName}} {{data.firstName}} </div>
+                                    </div>
+                                </ng-template>
+                            </ejs-dropdownlist>
+                        </div>
+                    </form>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <button class="e-btn e-outline e-primary" style="width: 150px;" (click)="saveProduct()">
+                        Save
+                    </button>
+                    <button class="e-btn e-outline e-danger" style="width: 150px;" (click)="hideDialog()">
+                        Cancel
+                    </button>
+
+
+
+
+                </ng-template>
+            </p-dialog>
+
+            <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>

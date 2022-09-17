@@ -1,0 +1,157 @@
+
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+<p-toast position="top-right"></p-toast>
+<div class="container-fluid page">
+
+    <p-toolbar>
+        <ng-template pTemplate="left">
+            <h4>Project Lists</h4>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <!-- <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2"
+                (click)="openNew()"></button> -->
+                <!-- <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                    <button ejs-button cssClass="e-small e-round" iconCss="e-btn-sb-icons e-add-icon" (click)="openNew()"></button>
+                </div> -->
+
+          
+
+            <button class="e-btn e-outline e-primary" style="width: 150px;"
+            (click)="openNew()">
+            Add Project
+        </button>
+        </ng-template>
+    </p-toolbar>
+
+    <div class="card" style="margin-top: 10px;">
+        <div class="card-body">
+            <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-lg-12 control-section card-control-section basic_card_layout">
+                    <div class="e-sample-resize-container e-card-resize-container">
+                        <div class='row'>
+                            <div class="row card-layout" >
+                                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6" style="margin-top: 20px;" *ngFor="let project of projectList">
+                                    <div tabindex="0" class="e-card" id="basic_card">
+                                        <div class="ribbon"><span [class]="'ribbonCard projet-' + project.status" >{{project.status}}</span></div>
+                                        <div class="e-card-header">
+                                            <div class="e-card-header-caption">
+                                                <div class="e-card-header-title">{{project.name}}</div>
+                                                <div class="e-card-sub-title">{{project.client}} | {{project.duration}} day </div>
+                                            </div>
+                                        </div>
+                                        <div class="e-card-content" style="height: 100px;">
+                                           <p class="sammy-nowrap-2" style="height: 90px;" > {{project.description}}</p>
+                                        </div>
+                                        <div class="e-card-actions" style="margin-top: 5px;">
+                                            <button class="e-btn e-outline e-primary"
+                                                routerLinkActive="list-item-active"
+                                                [routerLink]="['/projet-tache',project.id_Project]">
+                                                Read More
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <p-dialog [(visible)]="projecttDialog" [style]="{width: '450px'}" header="Project Details" [modal]="true"
+        styleClass="p-fluid">
+        
+            <form id="formId" [formGroup]="reactForm" #formDir="ngForm" class="form-horizontal" novalidate="">
+
+                <div class="form-group">
+                    <div class="e-float-input">
+                        <input id="check" type="text" formControlName="check" [(ngModel)]="projectDTO.name">
+                        <span class="e-float-line"></span>
+                        <label for="check" class="e-float-text">Name</label>
+                    </div>
+                    <div *ngIf="check.errors">
+                        <div *ngIf="check.errors.required && check.touched" class="e-error">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="e-float-input">
+                        <input id="check" type="text" formControlName="check" [(ngModel)]="projectDTO.client">
+                        <span class="e-float-line"></span>
+                        <label for="check" class="e-float-text">Client</label>
+                    </div>
+                    <div *ngIf="check.errors">
+                        <div *ngIf="check.errors.required && check.touched" class="e-error">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="e-float-input">
+                        <textarea id="check" type="text" formControlName="check" [(ngModel)]="projectDTO.description"></textarea>
+                        <span class="e-float-line"></span>
+                        <label for="check" class="e-float-text">Description</label>
+                    </div>
+                    <div *ngIf="check.errors">
+                        <div *ngIf="check.errors.required && check.touched" class="e-error">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="form-group">
+                <div class="col-lg-9  content-wrapper" >
+                    <div style="margin: 0px auto; width:350px; padding-top: 40px;">
+                        <ejs-dropdownlist id='games' #sample [dataSource]='emplyeeList' (change)='onChange($event)'  [fields]='fields' [placeholder]='waterMark' ></ejs-dropdownlist>
+                    </div>
+                </div>
+            </div> -->
+
+                <div style="margin-top: 10px;" class="row justify-content-md-center">
+                    <button id="validateSubmit" class="samplebtn e-control e-btn " type="submit"
+                        style="height:40px;width: 150px; color: #4a9ad7;border: #868789;" (click)="addProject()">Add
+                        Project</button>
+                </div>
+            </form>
+       
+
+    </p-dialog>

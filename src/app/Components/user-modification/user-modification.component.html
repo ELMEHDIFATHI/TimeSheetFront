@@ -1,0 +1,352 @@
+<div class="container-fluid page">
+
+
+    <p-toolbar>
+        <ng-template pTemplate="left">
+            <h4>Developer - Manager </h4>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+
+        </ng-template>
+    </p-toolbar>
+
+    <div class="card" style="margin-top: 10px;">
+        <div class="card-body">
+
+
+
+
+
+            <p-toast></p-toast>
+
+            <div>
+                <div class="card small">
+
+
+
+
+                    <p-table #dt [value]="EmployeeDevList" rowGroupMode="rowspan" sortMode="single"
+                        responsiveLayout="scroll" styleClass="p-datatable-sm" [rows]="10" [paginator]="true"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                        <ng-template pTemplate="caption">
+                            <div class="flex align-items-center justify-content-between">
+                                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                    <h5 class="m-0">Developers</h5>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 justify-content-end">
+                                    <div style="float: right;">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="id">Id<p-sortIcon field="name"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="image">Image<p-sortIcon field="image"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="email"> Email<p-sortIcon field="email"></p-sortIcon>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-empl>
+                            <tr>
+                                <td>{{empl.id}}</td>
+                                <td>
+
+                                    <img [src]="'data:image/jpg;base64,' + empl.photo" alt=""
+                                        class="user-image mr-1 p-2" />
+                                </td>
+                                <td>{{empl.firstName}} {{empl.lastName}}</td>
+                                <td>{{empl.email}}</td>
+                                <td>
+                                    <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-info mr-2" (click)="editEmployee(empl)"
+                                        style="height: 25px;width: 25px;"></button>
+                                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteEmplyee(empl)" style="height: 25px;width: 25px"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="flex align-items-center justify-content-between">
+                                In total there are {{ EmployeeDevList ? EmployeeDevList.length : 0 }} tasks.
+                            </div>
+                        </ng-template>
+                    </p-table>
+
+                </div>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <div class="card small">
+
+                    <p-table #dt [value]="EmployeeManList" rowGroupMode="rowspan" sortMode="single"
+                        responsiveLayout="scroll" styleClass="p-datatable-sm" [rows]="10" [paginator]="true"
+                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                        [showCurrentPageReport]="true">
+                        <ng-template pTemplate="caption">
+                            <div class="flex align-items-center justify-content-between">
+                                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                                    <h5 class="m-0">Managers</h5>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 justify-content-end">
+                                    <div style="float: right;">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="id">Id<p-sortIcon field="name"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="image">Image<p-sortIcon field="image"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon>
+                                </th>
+                                <th pSortableColumn="email"> Email<p-sortIcon field="email"></p-sortIcon>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-empl>
+                            <tr>
+                                <td>{{empl.id}}</td>
+                                <td>
+
+                                    <img [src]="'data:image/jpg;base64,' + empl.photo" alt=""
+                                        class="user-image mr-1 p-2" />
+                                </td>
+                                <td>{{empl.firstName}} {{empl.lastName}}</td>
+                                <td>{{empl.email}}</td>
+                                <td>
+                                    <button pButton pRipple icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-info mr-2"
+                                        style="height: 25px;width: 25px;" (click)="editEmployee1(empl)"></button>
+                                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"
+                                        (click)="deleteEmplyee(empl)" style="height: 25px;width: 25px"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="summary">
+                            <div class="flex align-items-center justify-content-between">
+                                In total there are {{ EmployeeDevList ? EmployeeDevList.length : 0 }} tasks.
+                            </div>
+                        </ng-template>
+                    </p-table>
+                    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+
+                    <p-dialog [(visible)]="userDialog" [style]="{width: '450px'}" header="Developer Details"
+                        [modal]="true" styleClass="p-fluid">
+                        <ng-template pTemplate="content">
+                            <form id="formId" [formGroup]="reactFormEmp" #formDir="ngForm" class="form-horizontal"
+                                novalidate="">
+
+                                <div class="form-group">
+
+
+                                    <div class="e-float-input">
+                                        <input readonly id="id" type="text" formControlName="id"
+                                            [(ngModel)]="employeeM.id">
+                                        <span class="e-float-line"></span>
+                                        <label for="check" class="e-float-text"></label>
+                                    </div>
+
+                                    <div class="e-float-input">
+                                        <input id="firstname" type="text" formControlName="firstname"
+                                            [(ngModel)]="employeeM.firstName">
+                                        <span class="e-float-line"></span>
+                                        <label for="firstname" class="e-float-text">First Name</label>
+                                    </div>
+                                    <div *ngIf="firstname.errors">
+                                        <div *ngIf="firstname.errors.required && firstname.touched" class="e-error">
+                                            This field is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <input id="lastname" type="text" formControlName="lastname"
+                                            [(ngModel)]="employeeM.lastName">
+                                        <span class="e-float-line"></span>
+                                        <label for="lastname" class="e-float-text">Last Name</label>
+                                    </div>
+                                    <div *ngIf="lastname.errors">
+                                        <div *ngIf="lastname.errors.required && lastname.touched" class="e-error">
+                                            This field is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <div class="text-center">
+                                            <img [src]="'data:image/jpg;base64,' + employeeM.photo" alt=""
+                                                class="user-image mr-1 p-2" />
+                                        </div>
+                                        <input class="form-control" type="file" id="formFile" style="margin-top: 5px;"
+                                            (change)="onChange($event)">
+                                        <span class="e-float-line"></span>
+                                        <label for="check" class="e-float-text">Photo</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <input id="email_check" type="text" formControlName="email_check"
+                                            [(ngModel)]="employeeM.email">
+                                        <span class="e-float-line"></span>
+                                        <label for="email_check" class="e-float-text">Email</label>
+                                    </div>
+                                    <div *ngIf="email_check.errors ">
+                                        <div *ngIf="email_check.errors.email && email_check.touched" class="e-error">
+                                            Please enter a valid email address.
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <input id="username" type="text" formControlName="username"
+                                            [(ngModel)]="employeeM.username" readonly>
+                                        <span class="e-float-line"></span>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <input id="password" type="password" formControlName="password"
+                                            [(ngModel)]="employeeM.password">
+                                        <span class="e-float-line"></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                            <button class="e-btn e-outline e-primary" style="width: 150px;" (click)="saveEmployeeDev()">
+                                Save
+                            </button>
+
+
+                            <button class="e-btn e-outline e-danger" style="width: 150px;" (click)="hideDialog()">
+                                Cancel
+                            </button>
+
+                        </ng-template>
+                    </p-dialog>
+
+
+
+
+
+
+
+
+
+                    <p-dialog [(visible)]="userDialog1" [style]="{width: '450px'}" header="Developer Details"
+                        [modal]="true" styleClass="p-fluid">
+                        <ng-template pTemplate="content">
+                            <form id="formId" [formGroup]="reactFormEmp" #formDir="ngForm" class="form-horizontal"
+                                novalidate="">
+
+                                <div class="form-group">
+
+
+                                    <div class="e-float-input">
+                                        <input readonly id="id" type="text" formControlName="id"
+                                            [(ngModel)]="employeeM.id">
+                                        <span class="e-float-line"></span>
+                                        <label for="check" class="e-float-text"></label>
+                                    </div>
+
+                                    <div class="e-float-input">
+                                        <input id="check" type="text" formControlName="check"
+                                            [(ngModel)]="employeeM.firstName">
+                                        <span class="e-float-line"></span>
+                                        <label for="check" class="e-float-text">First Name</label>
+                                    </div>
+                                    <div *ngIf="check.errors">
+                                        <div *ngIf="check.errors.required && check.touched" class="e-error">
+                                            This field is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <input id="check" type="text" formControlName="check"
+                                            [(ngModel)]="employeeM.lastName">
+                                        <span class="e-float-line"></span>
+                                        <label for="check" class="e-float-text">Last Name</label>
+                                    </div>
+                                    <div *ngIf="check.errors">
+                                        <div *ngIf="check.errors.required && check.touched" class="e-error">
+                                            This field is required.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <div class="text-center">
+                                            <img [src]="'data:image/jpg;base64,' + employeeM.photo" alt=""
+                                                class="user-image mr-1 p-2" />
+                                        </div>
+                                        <input class="form-control" type="file" id="formFile" style="margin-top: 5px;"
+                                            (change)="onChange($event)">
+                                        <span class="e-float-line"></span>
+                                        <label for="check" class="e-float-text">Photo</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="e-float-input">
+                                        <input id="email_check" type="text" formControlName="email_check"
+                                            [(ngModel)]="employeeM.email">
+                                        <span class="e-float-line"></span>
+                                        <label for="email_check" class="e-float-text">Email</label>
+                                    </div>
+                                    <div *ngIf="email_check.errors ">
+                                        <div *ngIf="email_check.errors.email && email_check.touched" class="e-error">
+                                            Please enter a valid email address.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                            <button class="e-btn e-outline e-primary" style="width: 150px;" (click)="saveEmployeeMan()">
+                                Save
+                            </button>
+
+
+                            <button class="e-btn e-outline e-danger" style="width: 150px;" (click)="hideDialog1()">
+                                Cancel
+                            </button>
+
+                        </ng-template>
+                    </p-dialog>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

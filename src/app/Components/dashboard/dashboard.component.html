@@ -1,0 +1,128 @@
+<div class="container-fluid page">
+  <p-toolbar>
+    <ng-template pTemplate="left">
+        <h4>Dashboard</h4>
+    </ng-template>
+
+    <ng-template pTemplate="right">
+
+    </ng-template>
+</p-toolbar>
+
+  <div class="card" style="margin-top: 10px;">
+    <div class="card-body">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+          <div class="col">
+            <div
+              class="card1 radius-10 border-start border-0 border-3 border-success"
+            >
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <p class="mb-0 text-secondary">Total Employee</p>
+                    <h4 class="my-1 text-success">{{te}}</h4>
+                  </div>
+                  <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-black ms-auto">
+                    <img  src="./assets/user.png" alt="" class="user-image mr-1 p-2" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card1 radius-10 border-start border-0 border-3 border-warning "
+            >
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <p class="mb-0 text-secondary">Total Admin</p>
+                    <h4 class="my-1 text-warning">{{tm}}</h4>
+                  </div>
+
+                  <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-black ms-auto">
+                    <img  src="./assets/user.png" alt="" class="user-image mr-1 p-2" />
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div
+              class="card1 radius-10 border-start border-0 border-3 border-info"
+            >
+              <div class="card-body">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <p class="mb-0 text-secondary">Total Project</p>
+                    <h4 class="my-1 text-info">{{tp}}</h4>
+                  </div>
+
+                  <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-black ms-auto">
+                    <img  src="./assets/project.png" alt="" class="user-image mr-1 p-2" />
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row widgets">
+
+      <div class="col-12 xl:col-8">
+        <div class="card">
+          <div class="card-body">
+            <h5>Project Overview</h5>
+            <p-chart
+              type="bar"
+              [data]="basicData"
+              [options]="basicOptions"
+            ></p-chart>
+          </div>
+        </div>
+
+
+        <div class="card">
+          <div class="card-body">
+            <h5>Project Details</h5>
+            <p-chart type="bar" [data]="stackedData" [options]="stackedOptions"></p-chart>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+      <div class="col-12 xl:col-3">
+        <div class="card">
+          <div class="card-body">
+            <h5>Total Projects by Status</h5>
+            <p-chart type="pie" [data]="data" [options]="chartOptions"  [style]="{'width': '70%'}"></p-chart>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5>Task done to verified</h5>
+            <div class="text-center" style="font-size: 92px; color: #fd3550;">
+            {{dnv}}
+          </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,170 @@
+@import "/src/app/style/base/base.scss";
+@import "/src/app/style/inputs/slider.scss";
+@import "/src/app/style/inputs/color-picker.scss";
+@import "/src/app/style/inputs/input.scss";
+@import "/src/app/style/inputs/textbox.scss";
+@import "/src/app/style/inputs/uploader.scss";
+
+
+* {
+    font-family: "Montserrat", sans-serif;
+
+}
+
+.formtitle {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.70);
+}
+
+.logo {
+    text-align: center;
+    padding: 2.6rem 1rem;
+
+    img {
+        width: 200px;
+    }
+}
+
+.highcontrast .form-title,
+.material-dark .form-title,
+.fabric-dark .form-title,
+.bootstrap-dark .form-title,
+.bootstrap5-dark .form-title,
+.tailwind-dark .form-title,
+.fluent-dark .form-title {
+    color: #fff;
+}
+
+.e-error,
+.e-float-text {
+    font-weight: 500;
+}
+
+.e-custom-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+form {
+    padding-top: 20px;
+    margin-bottom: 45px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.highcontrast form,
+.highcontrast .header {
+    color: #fff;
+    background: #000000;
+}
+
+.header {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+table,
+td,
+th {
+    padding: 5px;
+}
+
+.form-horizontal .form-group {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.row {
+    padding-bottom: 30px;
+    padding-top: 25px;
+}
+
+.highcontrast .form-horizontal,
+.material-dark .form-horizontal,
+.fabric-dark .form-horizontal,
+.bootstrap-dark .form-horizontal,
+.bootstrap5-dark .form-horizontal {
+    background: #393939;
+}
+
+.tailwind-dark .form-horizontal {
+    background: #6c757d;
+}
+
+.fluent-dark .form-horizontal {
+    background: #212529;
+}
+
+
+body {
+    background: linear-gradient(45deg, #1870ed 0, #f18f88 100%);
+    font-family: 'Montserrat', 'sans-serif';
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  
+}
+
+.container-fluid {
+  
+    color: black;
+    margin: 0;
+    padding: 0;
+    background: url(../../../assets/img/bglogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .footer-link-container a,
+.footer-link-container div {
+  color: white;
+  font-size: 15px;
+}
+
+.footer-link-container a:hover {
+  text-decoration: none;
+}
+
+.foot_in_bottom {
+    position: absolute;
+    width: 100%;
+    padding: 0;
+    bottom: 0;
+    z-index: 1;
+    backdrop-filter: blur(77px);
+    padding: 10px;
+    margin: 0;
+  }
+  
+  ._footdis {
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  ._textright {
+    float: none;
+    text-align: center;
+  }
+  .copydesk {
+    display: none;
+  }
+  .copymobile {
+    display: block;
+    text-align: center;
+  }
+
+  
+
+
+

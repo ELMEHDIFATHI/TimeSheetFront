@@ -1,0 +1,81 @@
+@import "/src/app/style/base/base.scss";
+@import "/src/app/style/inputs/slider.scss";
+@import "/src/app/style/inputs/color-picker.scss";
+@import "/src/app/style/inputs/input.scss";
+@import "/src/app/style/inputs/textbox.scss";
+@import "/src/app/style/inputs/uploader.scss";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  font-family: "Montserrat", sans-serif;
+
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding: 2em;
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif, “Apple Color Emoji”, “Segoe UI Emoji”, “Segoe UI Symbol”;
+}
+
+div {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+
+
+}
+
+div .card {
+  margin-bottom: 40px;
+}
+
+
+
+.sammy-nowrap-2 {
+  text-overflow: ellipsis ellipsis;
+  hyphens: auto;
+  word-wrap: break-word;
+}
+
+
+.ribbon {
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  top: 0px;
+  right: -50px;
+
+  overflow: hidden;
+}
+
+.ribbonCard {
+  position: absolute;
+  top: 14px;
+  width: 200px;
+  transform: rotate(32deg);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .3px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+
+  &.projet-ToDo {
+    background: #FFCDD2;
+    color: #C63737;
+  }
+
+  &.projet-InProgress {
+    background: #FEEDAF;
+    color: #f6c103;
+  }
+
+  &.projet-Done {
+    background: #B3E5FC;
+    color: #3767c6;
+  }
+
+}

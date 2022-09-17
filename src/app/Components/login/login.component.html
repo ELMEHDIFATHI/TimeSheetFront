@@ -1,0 +1,63 @@
+<div class="container-fluid">
+
+    <div class="container mt-5 photo">
+        <div class="row justify-content-md-center">
+            <div class="col-lg-8 control-section" style="margin-bottom: 25px; width: 500px;">
+                <div class="content-wrapper" style="margin-bottom: 25px; width: 500px;">
+
+                    <div class="logo py-4">
+                        <img src="./assets/logo.png" alt="Company Logo" />
+                    </div>
+
+
+                    <form id="formId" class="form-horizontal">
+
+                        <div class="alert alert-danger" *ngIf="erreur==1">
+                            <strong>login ou mot de passe erronés..</strong>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <input type="text" name="username" class="form-control" [(ngModel)]="user.username">
+                                <span class="e-float-line"></span>
+                                <label for="check" class="e-float-text">Login</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <input type="password" name="password" class="form-control" [(ngModel)]="user.password">
+                                <span class="e-float-line"></span>
+                                <label for="check" class="e-float-text">Password</label>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-md-center">
+
+
+                            <button class="e-btn e-outline e-primary" style="width: 150px;" (click)="onLoggedin()">
+                                Connexion
+                            </button>
+
+
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-link-container foot_in_bottom">
+        <div class="row" style="padding: 0;margin: 0; ">
+            <div class="col-md-12 _footdis">
+                <div class="copydesk" > © 2022 Expertise Data </div>
+                <div class="_textright">
+                    <a>&nbsp; Personal data</a>
+                    <a>&nbsp;&nbsp;&nbsp;Legal Notice</a>
+                </div>
+                <div class="copymobile"> © 2022 Expertise Data </div>
+            </div>
+        </div>
+    </div>
+</div>

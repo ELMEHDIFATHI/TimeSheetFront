@@ -1,0 +1,236 @@
+<p-toast position="top-right"></p-toast>
+
+<div class="container-fluid page">
+
+    <p-toolbar>
+        <ng-template pTemplate="left">
+            <h4>Manager - Developer</h4>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+
+            <button class="e-btn e-outline e-success"  routerLinkActive="list-item-active" [routerLink]="['/user-modification']">
+                Modify Manager/Developer
+            </button>
+
+        </ng-template>
+    </p-toolbar>
+
+    <div class="card" style="margin-top: 10px;">
+
+        <div class="card-body">
+
+            <div class="row widgets">
+
+
+
+                <div class="col-lg-5 control-section" style="margin-bottom: 25px; width: 500px;">
+                    <div class="content-wrapper" style="margin-bottom: 25px;">
+                        <div class="formtitle">
+                            <span>Add Developer</span>
+                        </div>
+                        <form id="formId" [formGroup]="reactFormDev" #formDir="ngForm" class="form-horizontal"
+                            novalidate="">
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="check" type="text" formControlName="check"
+                                        [(ngModel)]="employeeDev.firstName">
+                                    <span class="e-float-line"></span>
+                                    <label for="check" class="e-float-text">First Name</label>
+                                </div>
+                                <div *ngIf="check.errors">
+                                    <div *ngIf="check.errors.required && check.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="check" type="text" formControlName="check"
+                                        [(ngModel)]="employeeDev.lastName">
+                                    <span class="e-float-line"></span>
+                                    <label for="check" class="e-float-text">Last Name</label>
+                                </div>
+                                <div *ngIf="check.errors">
+                                    <div *ngIf="check.errors.required && check.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input class="form-control" type="file" id="formFile" style="margin-top: 5px;"
+                                    (change)="onChange($event)" >
+                                    <span class="e-float-line"></span>
+                                    <label for="check" class="e-float-text">Photo</label>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="login" type="text" formControlName="login"
+                                        [(ngModel)]="employeeDev.username">
+                                    <span class="e-float-line"></span>
+                                    <label for="login" class="e-float-text">Login</label>
+                                </div>
+                                <div *ngIf="login.errors">
+                                    <div *ngIf="login.errors.required && login.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input type="password" id="password" formControlName="password"
+                                        [(ngModel)]="employeeDev.password" [value]=" ">
+                                    <span class="e-float-line"></span>
+                                    <label for="password" class="e-float-text">Password</label>
+                                </div>
+                                <div *ngIf="password.errors">
+                                    <div *ngIf="password.errors.required && password.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="email_check" type="text" formControlName="email_check"
+                                        [(ngModel)]="employeeDev.email">
+                                    <span class="e-float-line"></span>
+                                    <label for="email_check" class="e-float-text">Email</label>
+                                </div>
+                                <div *ngIf="email_check.errors ">
+                                    <div *ngIf="email_check.errors.email && email_check.touched" class="e-error">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            
+                            <div class="row justify-content-md-center">
+                                <button (click)="addEmployeeDev(employeeDev)" class="e-btn e-outline e-primary" style="width: 170px;">
+                                    Add Developer
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+ 
+                <div class="col-lg-5 control-section" style="margin-bottom: 25px; width: 500px;">
+                    <div class="content-wrapper" style="margin-bottom: 25px;">
+                        <div class="formtitle">
+                            <span>Add Manager</span>
+                        </div>
+                        <form id="formId" [formGroup]="reactFormMan" #formDir="ngForm" class="form-horizontal"
+                            novalidate="">
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="check" type="text" formControlName="check"
+                                        [(ngModel)]="employeeMan.firstName">
+                                    <span class="e-float-line"></span>
+                                    <label for="check" class="e-float-text">First Name</label>
+                                </div>
+                                <div *ngIf="check.errors">
+                                    <div *ngIf="check.errors.required && check.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="check" type="text" formControlName="check"
+                                        [(ngModel)]="employeeMan.lastName">
+                                    <span class="e-float-line"></span>
+                                    <label for="check" class="e-float-text">Last Name</label>
+                                </div>
+                                <div *ngIf="check.errors">
+                                    <div *ngIf="check.errors.required && check.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input class="form-control" type="file" id="formFile" style="margin-top: 5px;"
+                                    (change)="onChange1($event)">
+                                    <span class="e-float-line"></span>
+                                    <label for="check" class="e-float-text">Photo</label>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="login" type="text" formControlName="login"
+                                        [(ngModel)]="employeeMan.username">
+                                    <span class="e-float-line"></span>
+                                    <label for="login" class="e-float-text">Login</label>
+                                </div>
+                                <div *ngIf="login.errors">
+                                    <div *ngIf="login.errors.required && login.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input type="password" id="password" formControlName="password"
+                                        [(ngModel)]="employeeMan.password" [value]=" ">
+                                    <span class="e-float-line"></span>
+                                    <label for="password" class="e-float-text">Password</label>
+                                </div>
+                                <div *ngIf="password.errors">
+                                    <div *ngIf="password.errors.required && password.touched" class="e-error">
+                                        This field is required.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="e-float-input">
+                                    <input id="email_check" type="text" formControlName="email_check"
+                                        [(ngModel)]="employeeMan.email">
+                                    <span class="e-float-line"></span>
+                                    <label for="email_check" class="e-float-text">Email</label>
+                                </div>
+                                <div *ngIf="email_check.errors ">
+                                    <div *ngIf="email_check.errors.email && email_check.touched" class="e-error">
+                                        Please enter a valid email address.
+                                    </div>
+                                </div>
+                            </div>     
+                            <div class="row justify-content-md-center">
+                                <button (click)="addEmployeeMan(employeeMan)" class="e-btn e-outline e-primary" style="width:170px;">
+                                    Add Manager
+                                </button>
+
+                            </div>
+                        </form>
+                    </div> 
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
